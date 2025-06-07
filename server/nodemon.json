@@ -1,0 +1,13 @@
+{
+  "ignore": [
+    "venv/**",
+    "*.py",
+    "uploads/**"
+  ],
+  "watch": [
+    "*.js",
+    "api/*.js"
+  ],
+  "ext": "js,json",
+  "exec": "node app.js"
+}
