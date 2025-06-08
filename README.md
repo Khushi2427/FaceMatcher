@@ -28,7 +28,7 @@ Python
 
 Installation
 # Clone the repository
-git clone https://github.com/yourusername/bollywood-face-matcher.git
+git clone https://github.com/Khushi2427/FaceMatcher.git
 cd bollywood-face-matcher
 
 # Install dependencies
