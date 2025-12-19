@@ -26,25 +26,24 @@ export default function Home() {
       setUploadedImage(null);
       return;
     }
-    
-    // Create preview of uploaded image
+  
     const reader = new FileReader();
-    reader.onload = (e) => {
-      setUploadedImage(e.target.result);
-    };
+    reader.onload = (e) => setUploadedImage(e.target.result);
     reader.readAsDataURL(file);
-    
+  
     setLoading(true);
     setError(null);
     setProgress(0);
-    
+  
+    let progressInterval = null; // ✅ DECLARE HERE
+  
     try {
       const formData = new FormData();
-      formData.append('image', file);
-      
-      // Simulated progress for better UX
-      const progressInterval = setInterval(() => {
-        setProgress(prev => {
+      formData.append("image", file);
+  
+      // Simulated progress
+      progressInterval = setInterval(() => {
+        setProgress((prev) => {
           if (prev >= 90) {
             clearInterval(progressInterval);
             return 90;
@@ -52,45 +51,48 @@ export default function Home() {
           return prev + 10;
         });
       }, 300);
-      
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/match`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        },
-        withCredentials: true,
-        timeout: 30000,
-        onUploadProgress: (progressEvent) => {
-          const percentCompleted = Math.round(
-            (progressEvent.loaded * 100) / (progressEvent.total || 1)
-          );
-          setProgress(Math.min(percentCompleted, 90));
+  
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/match`,
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+          withCredentials: true,
+          timeout: 30000000,
+          onUploadProgress: (progressEvent) => {
+            const percentCompleted = Math.round(
+              (progressEvent.loaded * 100) / (progressEvent.total || 1)
+            );
+            setProgress(Math.min(percentCompleted, 90));
+          },
         }
-      });
-      
+      );
+  
       clearInterval(progressInterval);
       setProgress(100);
       setResult(response.data);
-      
-      // Small delay to show 100% progress
+  
       setTimeout(() => setLoading(false), 500);
-      
+  
     } catch (err) {
-      clearInterval(progressInterval);
-      let errorMessage = 'An error occurred during processing';
-      
+      if (progressInterval) clearInterval(progressInterval); // ✅ SAFE
+  
+      let errorMessage = "An error occurred during processing";
+  
       if (err.response?.data?.error) {
-        errorMessage = `${err.response.data.error} (${err.response.data.code || 'UNKNOWN'})`;
-      } else if (err.code === 'ECONNABORTED') {
-        errorMessage = 'Request timed out - please try again';
+        errorMessage = err.response.data.error;
+      } else if (err.code === "ECONNABORTED") {
+        errorMessage = "Request timed out - please try again";
       } else if (err.message) {
         errorMessage = err.message;
       }
-      
+  
       setError(errorMessage);
       setLoading(false);
       setProgress(100);
     }
   };
+  
 
   const features = [
     {
