@@ -69,7 +69,7 @@ export default function ResultCard({ actor, image, similarity, userFace, loading
                         </div>
                         <div className="relative group">
                             <img 
-                                src={`http://localhost:5001/${userFace}`} 
+                                src={`${import.meta.env.VITE_API_URL}/${userFace}`} 
                                 alt="Your face" 
                                 className="w-full h-56 object-cover rounded-xl shadow-sm group-hover:shadow-md transition-shadow duration-300"
                                 onError={(e) => {
@@ -89,7 +89,7 @@ export default function ResultCard({ actor, image, similarity, userFace, loading
                         <div className="relative group">
                             {image ? (
                                 <img 
-                                    src={`http://localhost:5001/bollywood/${image}`}
+                                    src={`${import.meta.env.VITE_API_URL}/bollywood/${image}`}
                                     alt={actor}
                                     className="w-full h-56 object-cover rounded-xl shadow-sm group-hover:shadow-md transition-shadow duration-300"
                                     onError={(e) => {

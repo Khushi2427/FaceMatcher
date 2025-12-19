@@ -53,7 +53,7 @@ export default function Home() {
         });
       }, 300);
       
-      const response = await axios.post('http://localhost:5001/api/match', formData, {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/match`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
