@@ -35,13 +35,13 @@ export default function About() {
   return (
     <div className="w-full bg-white">
       {/* Hero Section */}
-      <motion.div 
+      {/* <motion.div 
         initial="hidden"
         animate="visible"
         variants={fadeIn}
-        className="py-20 bg-gradient-to-r from-indigo-700 to-purple-600 text-white"
+        className="py-20 bg-gradient-to-r from-green-400 to-green-300 text-white"
       >
-        <div className="max-w-6xl mx-auto px-4 text-center">
+        {/* <div className="max-w-6xl mx-auto px-4 text-center">
           <motion.h1 
             variants={itemVariants}
             className="text-5xl font-bold mb-6"
@@ -54,8 +54,8 @@ export default function About() {
           >
             Our advanced AI technology matches your facial features with thousands of Bollywood celebrities
           </motion.p>
-        </div>
-      </motion.div>
+        </div> */}
+      {/* </motion.div> */} 
 
       {/* Technology Overview */}
       <div className="py-16">
@@ -66,7 +66,7 @@ export default function About() {
             variants={containerVariants}
             className="text-center mb-16"
           >
-            <motion.h2 variants={itemVariants} className="text-3xl font-bold text-indigo-700 mb-4">
+            <motion.h2 variants={itemVariants} className="text-3xl font-bold text-green-600 mb-4">
               Our Technology
             </motion.h2>
             <motion.p variants={itemVariants} className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -101,9 +101,9 @@ export default function About() {
                 key={index}
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
-                className="bg-white p-8 rounded-xl shadow-lg border border-gray-100"
+                className="bg-white p-8 rounded-xl shadow-lg border border-green-100"
               >
-                <div className="text-indigo-600 mb-6">
+                <div className="text-green-600 mb-6">
                   <motion.svg 
                     xmlns="http://www.w3.org/2000/svg" 
                     className="h-12 w-12"
@@ -114,7 +114,7 @@ export default function About() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={tech.icon} />
                   </motion.svg>
                 </div>
-                <h3 className="text-2xl font-semibold mb-4">{tech.title}</h3>
+                <h3 className="text-2xl font-semibold text-green-700 mb-4">{tech.title}</h3>
                 <p className="text-gray-600">{tech.desc}</p>
               </motion.div>
             ))}
@@ -125,9 +125,9 @@ export default function About() {
             initial="hidden"
             animate="visible"
             variants={containerVariants}
-            className="bg-indigo-50 p-12 rounded-2xl"
+            className="bg-green-50 p-12 rounded-2xl border border-green-100"
           >
-            <motion.h3 variants={itemVariants} className="text-3xl font-bold text-indigo-700 mb-8 text-center">
+            <motion.h3 variants={itemVariants} className="text-3xl font-bold text-green-600 mb-8 text-center">
               How It Works
             </motion.h3>
             <motion.div 
@@ -146,10 +146,10 @@ export default function About() {
                   whileHover={{ scale: 1.05 }}
                   className="text-center"
                 >
-                  <div className="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                  <div className="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                     {step.number}
                   </div>
-                  <h4 className="text-xl font-semibold mb-2">{step.title}</h4>
+                  <h4 className="text-xl font-semibold text-green-700 mb-2">{step.title}</h4>
                   <p className="text-gray-600">{step.desc}</p>
                 </motion.div>
               ))}
@@ -163,11 +163,11 @@ export default function About() {
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="py-16 bg-gray-50"
+        className="py-16 bg-green-50"
       >
         <div className="max-w-6xl mx-auto px-4">
           <motion.div variants={itemVariants} className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-indigo-700 mb-4">About Our Developer</h2>
+            <h2 className="text-3xl font-bold text-green-600 mb-4">About Our Developer</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Our developer is an AI and Bollywood enthusiast with a passion for technology and cinema.
             </p>
@@ -179,19 +179,18 @@ export default function About() {
             {[
               {name: "Khushi", role: "Data Scientist and Web Developer", bio: "Enthusiast in AI and Web Development"},
               {name: "Parul Gupta", role: "Bollywood Expert", bio: "Film historian and celebrity data curator"}
-
             ].map((member, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
                 whileHover={{ scale: 1.03 }}
-                className="bg-white p-6 rounded-lg shadow-md text-center"
+                className="bg-white p-6 rounded-lg shadow-md text-center border border-green-100"
               >
-                <div className="w-24 h-24 bg-indigo-100 rounded-full mx-auto mb-4 flex items-center justify-center text-indigo-600 text-2xl font-bold">
+                <div className="w-24 h-24 bg-green-100 rounded-full mx-auto mb-4 flex items-center justify-center text-green-600 text-2xl font-bold">
                   {member.name.split(' ').map(n => n[0]).join('')}
                 </div>
-                <h3 className="text-xl font-semibold">{member.name}</h3>
-                <p className="text-indigo-600 mb-2">{member.role}</p>
+                <h3 className="text-xl font-semibold text-green-700">{member.name}</h3>
+                <p className="text-green-600 mb-2">{member.role}</p>
                 <p className="text-gray-600">{member.bio}</p>
               </motion.div>
             ))}
@@ -204,7 +203,7 @@ export default function About() {
         initial="hidden"
         animate="visible"
         variants={fadeIn}
-        className="py-16 bg-indigo-700 text-white text-center"
+        className="py-16 bg-green-300 text-white text-center"
       >
         <div className="max-w-4xl mx-auto px-4">
           <motion.h2 variants={itemVariants} className="text-3xl font-bold mb-6">
@@ -218,7 +217,7 @@ export default function About() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             href="/" 
-            className="inline-block bg-white text-indigo-700 font-semibold px-8 py-3 rounded-lg hover:bg-indigo-100 transition duration-300"
+            className="inline-block bg-white text-green-600 font-semibold px-8 py-3 rounded-lg hover:bg-green-50 transition duration-300 shadow-md hover:shadow-lg"
           >
             Try It Now
           </motion.a>

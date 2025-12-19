@@ -44,7 +44,7 @@ export default function FileUpload({ onUpload, disabled }) {
       <div 
         {...getRootProps()} 
         className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors
-          ${isDragActive ? 'border-blue-500 bg-blue-50' : 'border-gray-300 hover:border-gray-400'}
+          ${isDragActive ? 'border-green-500 bg-green-100' : 'border-gray-300 hover:border-gray-400'}
           ${preview ? 'p-0 border-0' : ''}
           ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
         `}
